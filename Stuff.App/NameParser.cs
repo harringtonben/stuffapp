@@ -10,26 +10,34 @@ namespace Stuff.App
     {
         public Name Parse(string name)
         {
-
-            if (name.Contains(" "))
+            var nameParts = name.Split(' ');
+            var result = new Name();
+            switch (nameParts.Length)
             {
-                var nameParts = name.Split(' ');
-
-                return new Name
-                {
-                    FirstName = nameParts[0],
-                    LastName = nameParts[1]
-                };
+                case 1:
+                    result = new Name
+                    {
+                        FirstName = name
+                    };
+                    break;
+                case 2:
+                    result = new Name
+                    {
+                        FirstName = nameParts[0],
+                        LastName = nameParts[1]
+                    };
+                    break;
+                case 3:
+                    result = new Name
+                    {
+                        FirstName = nameParts[0],
+                        MiddleName = nameParts[1],
+                        LastName = nameParts[2]
+                    };
+                    break;
             }
-            else
-            {
-                return new Name
-                {
-                    FirstName = name
-                };
-            }
 
-
+            return result;
         }
     }
 

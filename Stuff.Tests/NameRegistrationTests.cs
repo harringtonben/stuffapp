@@ -38,5 +38,21 @@ namespace Stuff.Tests
             Assert.AreEqual("Doe", result.LastName);
         }
 
+        [Test]
+        public void Entering_three_names_results_in_the_first_name_and_middle_name_and_last_name_being_filled_out()
+        {
+            //Arrange
+            var name = "John Richard Doe";
+            var nameParser = new NameParser();
+
+            //Act
+            var result = nameParser.Parse(name);
+
+            //Assert
+            Assert.AreEqual("John", result.FirstName);
+            Assert.AreEqual("Richard", result.MiddleName);
+            Assert.AreEqual("Doe", result.LastName);
+        }
+
     }
 }
